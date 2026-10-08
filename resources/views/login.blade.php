@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Login - Pockettivity')
+@section('title', 'Log In | Pockettivity')
 
 @section('content')
 
@@ -8,69 +8,62 @@
 
     <div class="login-box">
 
+        <a href="{{ route('home') }}" class="auth-brand">
+            <img src="{{ asset('images/logo.png') }}" alt="">
+            <span>pockettivity</span>
+        </a>
+
+        <p class="small-title">YOUR FINANCES, IN FOCUS</p>
+
         <h2>
-            Login
+            Welcome back
         </h2>
 
         <p>
-            Masuk ke akun Pockettivity
+            Sign in to your Pockettivity account.
         </p>
 
-        @if(session('success'))
-
-            <p style="color: green;">
-                {{ session('success') }}
-            </p>
-
-        @endif
-
-        @if($errors->any())
-
-            <p style="color: red;">
-                {{ $errors->first() }}
-            </p>
-
-        @endif
+        @include('partials.ui-alerts', ['alertClass' => 'auth-message'])
 
         <form action="{{ route('login.process') }}" method="POST">
 
             @csrf
 
             <label>
-                Email
+                Your email address
             </label>
 
             <input
                 type="email"
                 name="email"
-                placeholder="Masukkan email"
+                placeholder="you@example.com"
                 value="{{ old('email') }}"
                 required
             >
 
             <label>
-                Password
+                Your password
             </label>
 
             <input
                 type="password"
                 name="password"
-                placeholder="Masukkan password"
+                placeholder="Enter your password"
                 required
             >
 
             <button type="submit">
-                Login
+                Log In
             </button>
 
         </form>
 
         <p class="register-text">
 
-            Belum punya akun?
+            New to Pockettivity?
 
             <a href="{{ route('register') }}">
-                Register
+                Create an account
             </a>
 
         </p>

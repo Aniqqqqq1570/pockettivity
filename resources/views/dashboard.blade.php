@@ -1,3 +1,4 @@
+
 @extends('layout')
 
 @section('title', 'Dashboard - Pockettivity')
@@ -6,140 +7,167 @@
 
 <section class="dashboard">
 
-```
-<div class="dashboard-container">
+    <div class="dashboard-container">
 
-    <p class="small-title">
-        DASHBOARD
-    </p>
+        <p class="small-title">DASHBOARD</p>
 
-    <h1>
-        Selamat datang, {{ Auth::user()->name }}
-    </h1>
+        <h1>
+            Welcome, {{ Auth::user()->name }}
+        </h1>
 
-    <p>
-        Kelola keuanganmu dengan Pockettivity.
-    </p>
+        <p>
+            Your finances, all in one place.
+        </p>
 
 
-    <div class="dashboard-menu">
+        <div class="dashboard-menu">
 
-        <a href="{{ route('transactions') }}" class="dashboard-feature">
+            <a href="{{ route('transactions') }}" class="dashboard-feature">
 
-            <div class="feature-icon">
-                +
-            </div>
+                <div class="feature-icon">
+                    +
+                </div>
 
-            <div>
-                <h3>
-                    Transaction Recording
-                </h3>
+                <div>
+                    <h3>
+                        Record Transactions
+                    </h3>
 
-                <p>
-                    Catat pemasukan dan pengeluaran.
-                </p>
-            </div>
+                    <p>
+                        Add and review income and expenses.
+                    </p>
+                </div>
 
-        </a>
-
-
-        <a href="#" class="dashboard-feature">
-
-            <div class="feature-icon">
-                ↗
-            </div>
-
-            <div>
-                <h3>
-                    Money Analysis
-                </h3>
-
-                <p>
-                    Lihat kondisi dan ringkasan keuangan.
-                </p>
-            </div>
-
-        </a>
+            </a>
 
 
-        <a href="#" class="dashboard-feature">
+            <a href="{{ route('analysis') }}" class="dashboard-feature">
 
-            <div class="feature-icon">
-                Rp
-            </div>
+                <div class="feature-icon">
+                    ↗
+                </div>
 
-            <div>
-                <h3>
-                    Budget Management
-                </h3>
+                <div>
+                    <h3>
+                        Reports & Analysis
+                    </h3>
 
-                <p>
-                    Atur dan pantau budget keuangan.
-                </p>
+                    <p>
+                        Understand your spending and cash flow.
+                    </p>
+                </div>
 
-            </div>
-
-        </a>
-
-    </div>
+            </a>
 
 
-    <div class="dashboard-card">
+            <a href="{{ route('budgets') }}" class="dashboard-feature">
 
-        <h3>
-            Ringkasan Keuangan
-        </h3>
+                <div class="feature-icon">
+                    Rp
+                </div>
 
-        <div class="money-summary">
+                <div>
+                    <h3>
+                        Budget Management
+                    </h3>
 
-            <div>
-                <span>
-                    Pemasukan
-                </span>
+                    <p>
+                        Set monthly limits and track your progress.
+                    </p>
+                </div>
 
-                <strong>
-                    Rp 0
-                </strong>
-            </div>
+            </a>
 
-            <div>
-                <span>
-                    Pengeluaran
-                </span>
+        </div>
 
-                <strong>
-                    Rp 0
-                </strong>
-            </div>
 
-            <div>
-                <span>
-                    Saldo
-                </span>
+        <div class="dashboard-card">
 
-                <strong>
-                    Rp 0
-                </strong>
+            <h3>
+                Financial Summary
+            </h3>
+
+
+            <div class="money-summary">
+
+
+                <div>
+
+                    <span>
+                        Income
+                    </span>
+
+                    <strong>
+                        Rp {{ number_format($income, 0, ',', '.') }}
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Expenses
+                    </span>
+
+                    <strong>
+                        Rp {{ number_format($expense, 0, ',', '.') }}
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Balance
+                    </span>
+
+                    <strong>
+                        Rp {{ number_format($balance, 0, ',', '.') }}
+                    </strong>
+
+                </div>
+
+
+                <div>
+                    <span>Budget remaining this month</span>
+                    <strong>Rp {{ number_format($budgetRemaining, 0, ',', '.') }}</strong>
+                </div>
+
+
             </div>
 
         </div>
 
+        <div class="dashboard-quick-actions">
+            <a href="{{ route('transactions', ['new_type' => 'pemasukan']) }}#transaction-entry" class="button primary">+ Add Income</a>
+            <a href="{{ route('transactions', ['new_type' => 'pengeluaran']) }}#transaction-entry" class="button expense-action">− Add Expense</a>
+        </div>
+
+        <div class="dashboard-card recent-transactions">
+            <div class="recent-transactions-heading">
+                <h3>Recent Transactions</h3>
+                <a href="{{ route('transactions') }}">View All Transactions</a>
+            </div>
+
+            @forelse($latestTransactions as $transaction)
+                <div class="recent-transaction-item">
+                    <div>
+                        <strong>{{ $transaction->description }}</strong>
+                        <span>{{ $transaction->category?->name ?? 'Uncategorized' }} · {{ $transaction->date }}</span>
+                    </div>
+                    <strong class="{{ $transaction->type === 'pemasukan' ? 'income' : 'expense' }}">
+                        {{ $transaction->type === 'pemasukan' ? '+' : '−' }} Rp {{ number_format($transaction->amount, 0, ',', '.') }}
+                    </strong>
+                </div>
+            @empty
+                <p>No transactions yet. Add your first transaction to see it here.</p>
+            @endforelse
+        </div>
     </div>
-
-
-    <form action="{{ route('logout') }}" method="POST">
-
-        @csrf
-
-        <button class="logout-button" type="submit">
-            Logout
-        </button>
-
-    </form>
-
-</div>
-```
 
 </section>
 
 @endsection
+

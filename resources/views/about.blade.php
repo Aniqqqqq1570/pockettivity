@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Tentang - Pockettivity')
+@section('title', 'About Pockettivity')
 
 @section('content')
 
@@ -9,40 +9,41 @@
     <div class="about-container">
 
         <p class="small-title">
-            TENTANG POCKETTIVITY
+            ABOUT POCKETTIVITY
         </p>
 
         <h1>
-            Kelola Keuangan Jadi Lebih Mudah
+            Personal finance, made clearer
         </h1>
 
         <p>
-            Pockettivity adalah aplikasi yang dibuat untuk membantu
-            pengguna dalam mengelola keuangan pribadi.
+            Pockettivity helps you keep your personal finances organized in one simple workspace.
         </p>
 
         <p>
-            Dengan Pockettivity, pengguna dapat mencatat pemasukan,
-            pengeluaran, mengatur budget, dan melihat kondisi
-            keuangan dengan lebih mudah.
+            Record income and expenses, organize transactions by category, set monthly budgets, and understand your spending over time.
         </p>
 
         <div class="about-card">
 
             <h2>
-                Tujuan Pockettivity
+                Our purpose
             </h2>
 
             <p>
-                Membantu pengguna agar lebih mudah mencatat,
-                mengatur, dan memahami kondisi keuangan mereka
-                dalam satu aplikasi.
+                Make everyday money management easier to follow, so you can make informed choices with a clearer view of your finances.
             </p>
 
         </div>
 
+        <div class="about-card">
+            <h2>Why track your finances?</h2>
+            <p>Consistent records help you understand spending patterns, plan for monthly needs, and set priorities based on your actual activity.</p>
+            <p>Pockettivity brings transactions, categories, budgets, and summaries together in one clear view.</p>
+        </div>
+
         <a href="{{ route('home') }}" class="button primary">
-            Kembali ke Home
+            Back to Home
         </a>
 
     </div>

@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Fitur - Pockettivity')
+@section('title', 'Pockettivity Features')
 
 @section('content')
 
@@ -9,22 +9,21 @@
     <div class="features-container">
 
         <p class="small-title">
-            FITUR POCKETTIVITY
+            POCKETTIVITY FEATURES
         </p>
 
         <h1>
-            Pilih Fitur
+            Tools for everyday finances
         </h1>
 
         <p class="features-description">
-            Gunakan fitur Pockettivity untuk membantu mengatur
-            keuangan pribadi.
+            Keep your records organized, monitor your budget, and understand your financial activity.
         </p>
 
 
         <div class="features-list">
 
-            <a href="#" class="feature-card">
+            <a href="{{ route('transactions') }}" class="feature-card">
 
                 <div class="icon">
                     +
@@ -35,53 +34,68 @@
                 </h3>
 
                 <p>
-                    Catat pemasukan dan pengeluaran
-                    dengan mudah.
+                    Record income and expenses in one searchable history.
                 </p>
 
             </a>
 
 
-            <a href="#" class="feature-card">
+            <a href="{{ route('analysis') }}" class="feature-card">
 
                 <div class="icon">
                     ↗
                 </div>
 
                 <h3>
-                    Money Analysis
+                    Reports & Analysis
                 </h3>
 
                 <p>
-                    Lihat analisis dan kondisi keuangan
-                    berdasarkan transaksi.
+                    Review your cash flow, monthly activity, and spending by category.
                 </p>
 
             </a>
 
 
-            <a href="{{ route('transactions') }}" class="feature-card">
+            <a href="{{ route('categories') }}" class="feature-card">
 
                 <div class="icon">
                     Rp
                 </div>
 
                 <h3>
-                    Budget Management
+                    Categories
                 </h3>
 
                 <p>
-                    Atur budget dan pantau penggunaan
-                    keuangan.
+                    Organize transactions with categories that work for you.
                 </p>
 
+            </a>
+
+            <a href="{{ route('budgets') }}" class="feature-card">
+                <div class="icon">Rp</div>
+                <h3>Budget Management</h3>
+                <p>Set monthly spending limits by category and track your progress.</p>
+            </a>
+
+            <a href="{{ route('transactions') }}" class="feature-card">
+                <div class="icon">≡</div>
+                <h3>Transaction History</h3>
+                <p>Search, filter, and sort your financial records.</p>
+            </a>
+
+            <a href="{{ route('dashboard') }}" class="feature-card">
+                <div class="icon">✓</div>
+                <h3>Financial Summary</h3>
+                <p>See income, expenses, balance, and remaining budget at a glance.</p>
             </a>
 
         </div>
 
 
         <a href="{{ route('home') }}" class="button primary">
-            Kembali ke Home
+            Back to Home
         </a>
 
     </div>

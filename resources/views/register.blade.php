@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Register - Pockettivity')
+@section('title', 'Create Account | Pockettivity')
 
 @section('content')
 
@@ -8,92 +8,85 @@
 
     <div class="login-box">
 
+        <a href="{{ route('home') }}" class="auth-brand">
+            <img src="{{ asset('images/logo.png') }}" alt="">
+            <span>pockettivity</span>
+        </a>
+
+        <p class="small-title">START WITH A CLEARER PICTURE</p>
+
         <h2>
-            Register
+            Create your account
         </h2>
 
         <p>
-            Buat akun Pockettivity
+            Build a simple habit of understanding your money.
         </p>
 
-        @if($errors->any())
-
-            <div style="color: red; margin-bottom: 15px;">
-
-                @foreach($errors->all() as $error)
-
-                    <p>
-                        {{ $error }}
-                    </p>
-
-                @endforeach
-
-            </div>
-
-        @endif
+        @include('partials.ui-alerts', ['alertClass' => 'auth-message'])
 
         <form action="{{ route('register.store') }}" method="POST">
 
             @csrf
 
             <label>
-                Nama
+                Your name
             </label>
 
             <input
                 type="text"
                 name="name"
-                placeholder="Masukkan nama"
+                placeholder="Your name"
                 value="{{ old('name') }}"
                 required
             >
 
             <label>
-                Email
+                Your email address
             </label>
 
             <input
                 type="email"
                 name="email"
-                placeholder="Masukkan email"
+                placeholder="you@example.com"
                 value="{{ old('email') }}"
                 required
             >
 
             <label>
-                Password
+                Create a password
             </label>
 
             <input
                 type="password"
                 name="password"
-                placeholder="Masukkan password"
+                placeholder="Create a password"
                 required
             >
 
             <label>
-                Konfirmasi Password
+                Confirm your password
             </label>
 
             <input
                 type="password"
                 name="password_confirmation"
-                placeholder="Ulangi password"
+                placeholder="Confirm your password"
                 required
             >
 
             <button type="submit">
-                Register
+                Create Account
             </button>
 
         </form>
 
         <p class="register-text">
 
-            Sudah punya akun?
+            Already have an account?
 
             <a href="{{ route('login') }}">
-                Login
+                Log In
             </a>
 
         </p>
