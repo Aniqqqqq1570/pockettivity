@@ -1,7 +1,7 @@
 
 @extends('layout')
 
-@section('title', 'Dashboard - Pockettivity')
+@section('title', 'Dasbor - Pockettivity')
 
 @section('content')
 
@@ -9,14 +9,14 @@
 
     <div class="dashboard-container">
 
-        <p class="small-title">DASHBOARD</p>
+        <p class="small-title">DASBOR</p>
 
         <h1>
-            Welcome, {{ Auth::user()->name }}
+            Selamat datang, {{ Auth::user()->name }}
         </h1>
 
         <p>
-            Your finances, all in one place.
+            Keuangan Anda, tersusun dalam satu tempat.
         </p>
 
 
@@ -30,11 +30,11 @@
 
                 <div>
                     <h3>
-                        Record Transactions
+                        Catat Transaksi
                     </h3>
 
                     <p>
-                        Add and review income and expenses.
+                        Tambahkan dan tinjau pemasukan serta pengeluaran.
                     </p>
                 </div>
 
@@ -49,11 +49,11 @@
 
                 <div>
                     <h3>
-                        Reports & Analysis
+                        Laporan &amp; Analisis
                     </h3>
 
                     <p>
-                        Understand your spending and cash flow.
+                        Pahami pengeluaran dan arus kas Anda.
                     </p>
                 </div>
 
@@ -68,11 +68,11 @@
 
                 <div>
                     <h3>
-                        Budget Management
+                        Kelola Anggaran
                     </h3>
 
                     <p>
-                        Set monthly limits and track your progress.
+                        Tetapkan batas bulanan dan pantau penggunaannya.
                     </p>
                 </div>
 
@@ -84,7 +84,7 @@
         <div class="dashboard-card">
 
             <h3>
-                Financial Summary
+                Ringkasan Keuangan
             </h3>
 
 
@@ -94,11 +94,11 @@
                 <div>
 
                     <span>
-                        Income
+                        Pemasukan
                     </span>
 
                     <strong>
-                        Rp {{ number_format($income, 0, ',', '.') }}
+                        {{ \App\Support\MoneyFormatter::format($income) }}
                     </strong>
 
                 </div>
@@ -107,11 +107,11 @@
                 <div>
 
                     <span>
-                        Expenses
+                        Pengeluaran
                     </span>
 
                     <strong>
-                        Rp {{ number_format($expense, 0, ',', '.') }}
+                        {{ \App\Support\MoneyFormatter::format($expense) }}
                     </strong>
 
                 </div>
@@ -120,19 +120,19 @@
                 <div>
 
                     <span>
-                        Balance
+                        Saldo
                     </span>
 
                     <strong>
-                        Rp {{ number_format($balance, 0, ',', '.') }}
+                        {{ \App\Support\MoneyFormatter::format($balance) }}
                     </strong>
 
                 </div>
 
 
                 <div>
-                    <span>Budget remaining this month</span>
-                    <strong>Rp {{ number_format($budgetRemaining, 0, ',', '.') }}</strong>
+                    <span>Sisa anggaran bulan ini</span>
+                    <strong>{{ \App\Support\MoneyFormatter::format($budgetRemaining) }}</strong>
                 </div>
 
 
@@ -141,28 +141,28 @@
         </div>
 
         <div class="dashboard-quick-actions">
-            <a href="{{ route('transactions', ['new_type' => 'pemasukan']) }}#transaction-entry" class="button primary">+ Add Income</a>
-            <a href="{{ route('transactions', ['new_type' => 'pengeluaran']) }}#transaction-entry" class="button expense-action">− Add Expense</a>
+            <a href="{{ route('transactions', ['new_type' => 'pemasukan']) }}#transaction-entry" class="button primary">+ Tambah Pemasukan</a>
+            <a href="{{ route('transactions', ['new_type' => 'pengeluaran']) }}#transaction-entry" class="button expense-action">− Tambah Pengeluaran</a>
         </div>
 
         <div class="dashboard-card recent-transactions">
             <div class="recent-transactions-heading">
-                <h3>Recent Transactions</h3>
-                <a href="{{ route('transactions') }}">View All Transactions</a>
+                <h3>Transaksi Terbaru</h3>
+                <a href="{{ route('transactions') }}">Lihat Semua Transaksi</a>
             </div>
 
             @forelse($latestTransactions as $transaction)
                 <div class="recent-transaction-item">
                     <div>
                         <strong>{{ $transaction->description }}</strong>
-                        <span>{{ $transaction->category?->name ?? 'Uncategorized' }} · {{ $transaction->date }}</span>
+                        <span>{{ $transaction->category?->name ?? 'Tanpa kategori' }} · {{ $transaction->date }}</span>
                     </div>
                     <strong class="{{ $transaction->type === 'pemasukan' ? 'income' : 'expense' }}">
-                        {{ $transaction->type === 'pemasukan' ? '+' : '−' }} Rp {{ number_format($transaction->amount, 0, ',', '.') }}
+                        {{ $transaction->type === 'pemasukan' ? '+' : '−' }} {{ \App\Support\MoneyFormatter::format($transaction->amount) }}
                     </strong>
                 </div>
             @empty
-                <p>No transactions yet. Add your first transaction to see it here.</p>
+                <p>Belum ada transaksi. Tambahkan transaksi pertama untuk melihatnya di sini.</p>
             @endforelse
         </div>
     </div>

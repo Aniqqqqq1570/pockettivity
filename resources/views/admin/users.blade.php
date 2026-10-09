@@ -1,7 +1,7 @@
 
 @extends('layout')
 
-@section('title', 'User Management | Pockettivity')
+@section('title', 'Kelola Pengguna | Pockettivity')
 
 @section('content')
 
@@ -14,15 +14,15 @@
             <div>
 
                 <p class="small-title">
-                    ADMIN PANEL
+                    PANEL ADMIN
                 </p>
 
                 <h1>
-                    User Management
+                    Kelola Pengguna
                 </h1>
 
                 <p>
-                    Manage Pockettivity accounts and access roles.
+                    Kelola akun Pockettivity dan hak akses pengguna.
                 </p>
 
             </div>
@@ -38,11 +38,11 @@
                 <div>
 
                     <h3>
-                        Users
+                        Pengguna
                     </h3>
 
                     <p>
-                        {{ $users->count() }} registered accounts
+                        {{ $users->count() }} akun terdaftar
                     </p>
 
                 </div>
@@ -82,7 +82,7 @@
                             @else
 
                                 <span class="role-badge user">
-                                    Standard User
+                                    Pengguna
                                 </span>
 
                             @endif
@@ -98,6 +98,7 @@
                                     <form
                                         action="{{ route('admin.users.makeUser', $user->id) }}"
                                         method="POST"
+                                        onsubmit="return confirm('Yakin mengubah peran admin ini menjadi pengguna?')"
                                     >
 
                                         @csrf
@@ -107,8 +108,9 @@
                                         <button
                                             type="submit"
                                             class="role-button secondary-role"
+                                            aria-label="Jadikan {{ $user->name }} sebagai pengguna"
                                         >
-                                            Make Standard User
+                                            Jadikan Pengguna
                                         </button>
 
                                     </form>
@@ -116,7 +118,7 @@
                                 @else
 
                                     <span class="current-user">
-                                        You
+                                        Anda
                                     </span>
 
                                 @endif
@@ -126,6 +128,7 @@
                                 <form
                                     action="{{ route('admin.users.makeAdmin', $user->id) }}"
                                     method="POST"
+                                    onsubmit="return confirm('Yakin memberikan peran admin kepada pengguna ini?')"
                                 >
 
                                     @csrf
@@ -135,8 +138,9 @@
                                     <button
                                         type="submit"
                                         class="role-button primary-role"
+                                        aria-label="Jadikan {{ $user->name }} sebagai admin"
                                     >
-                                        Make Admin
+                                        Jadikan Admin
                                     </button>
 
                                 </form>
@@ -159,7 +163,7 @@
                 href="{{ route('admin.dashboard') }}"
                 class="button secondary"
             >
-                Back to Dashboard
+                Kembali ke Dasbor
             </a>
 
         </div>

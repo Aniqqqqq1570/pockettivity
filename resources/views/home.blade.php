@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Pockettivity | Money, Made Clear')
+@section('title', 'Pockettivity | Keuangan Lebih Jelas')
 
 @section('content')
 
@@ -8,42 +8,42 @@
 
     <div class="hero-content">
         <div class="hero-copy">
-            <p class="small-title">PERSONAL FINANCE, MADE CLEAR</p>
-            <h1>Manage your money with <strong>pockettivity</strong></h1>
+            <p class="small-title">KEUANGAN PRIBADI LEBIH TERARAH</p>
+            <h1>Kelola keuangan bersama <strong>pockettivity</strong></h1>
             <p class="hero-text">
-                A calmer way to keep track of what comes in, what goes out, and what you want to save. Make everyday money decisions with a clearer picture.
+                Cara sederhana untuk mencatat pemasukan, pengeluaran, dan target tabungan. Ambil keputusan keuangan sehari-hari dengan lebih yakin.
             </p>
             <div class="hero-buttons">
                 @auth
-                    <a href="{{ route('dashboard') }}" class="button primary">Open dashboard</a>
+                    <a href="{{ route('dashboard') }}" class="button primary">Buka Dasbor</a>
                 @else
-                    <a href="{{ route('register') }}" class="button primary">Get started</a>
+                    <a href="{{ route('register') }}" class="button primary">Mulai</a>
                 @endauth
-                <a href="{{ route('features') }}" class="button secondary">Explore features</a>
+                <a href="{{ route('features') }}" class="button secondary">Lihat Fitur</a>
             </div>
-            <p class="hero-platform-note"><span></span> Your personal finance workspace on the web</p>
+            <p class="hero-platform-note"><span></span> Ruang kerja keuangan pribadi Anda</p>
         </div>
 
-        <div class="hero-visual" role="img" aria-label="Pockettivity financial workspace with transaction, budget, and spending tools">
+        <div class="hero-visual" role="img" aria-label="Ruang kerja keuangan Pockettivity dengan fitur transaksi, anggaran, dan pengeluaran">
             <div class="app-showcase">
                 <div class="app-showcase-top">
-                    <span>Pockettivity workspace</span>
-                    <span class="showcase-status">Ready for you</span>
+                    <span>Ruang kerja Pockettivity</span>
+                    <span class="showcase-status">Siap digunakan</span>
                 </div>
                 <div class="app-showcase-brand">
                     <img src="{{ asset('images/logo.png') }}" alt="">
                     <div>
                         <strong>pockettivity</strong>
-                        <span>Personal finance, in focus</span>
+                        <span>Keuangan pribadi lebih terarah</span>
                     </div>
                 </div>
                 <div class="showcase-points">
-                    <div class="showcase-point">Record every transaction</div>
-                    <div class="showcase-point">Plan a monthly budget</div>
-                    <div class="showcase-point">See where your money goes</div>
+                    <div class="showcase-point">Catat setiap transaksi</div>
+                    <div class="showcase-point">Rencanakan anggaran bulanan</div>
+                    <div class="showcase-point">Pantau penggunaan uang</div>
                 </div>
                 <div class="app-showcase-footer">
-                    <span>One clear view of your finances</span>
+                    <span>Ringkasan keuangan dalam satu tampilan</span>
                     <strong>POCKETTIVITY</strong>
                 </div>
             </div>
@@ -57,30 +57,30 @@
 <section class="features home-features">
 
     <div class="features-container">
-        <p class="small-title">A LITTLE MORE CLARITY, EVERY DAY</p>
-        <h2>Your money, thoughtfully organized</h2>
+        <p class="small-title">KEUANGAN LEBIH JELAS, SETIAP HARI</p>
+        <h2>Keuangan Anda tertata dengan baik</h2>
 
         <div class="features-list">
             <a href="{{ route('transactions') }}" class="feature-card">
                 <div class="icon">+</div>
-                <h3>Transaction recording</h3>
-                <p>Keep income and expenses together in a simple, searchable history.</p>
+                <h3>Pencatatan transaksi</h3>
+                <p>Simpan pemasukan dan pengeluaran dalam riwayat yang mudah dicari.</p>
             </a>
             <a href="{{ route('analysis') }}" class="feature-card">
                 <div class="icon">↗</div>
-                <h3>Reports and analysis</h3>
-                <p>Understand monthly activity and see which categories shape your spending.</p>
+                <h3>Laporan dan analisis</h3>
+                <p>Pahami aktivitas bulanan dan kategori yang memengaruhi pengeluaran Anda.</p>
             </a>
             <a href="{{ route('budgets') }}" class="feature-card">
                 <div class="icon">Rp</div>
-                <h3>Budget management</h3>
-                <p>Set a monthly limit and follow your progress as the month unfolds.</p>
+                <h3>Pengelolaan anggaran</h3>
+                <p>Tetapkan batas bulanan dan pantau penggunaannya sepanjang bulan.</p>
             </a>
         </div>
 
         <div class="about-card home-explanation">
-            <h2>Small habits. A clearer picture.</h2>
-            <p>Log a transaction, give it a category, and let your dashboard bring the month into view. Pockettivity keeps the routine straightforward so you can focus on the choices that matter to you.</p>
+            <h2>Kebiasaan sederhana, gambaran lebih jelas.</h2>
+            <p>Catat transaksi, pilih kategorinya, lalu lihat ringkasan bulanan di dasbor. Pockettivity membantu Anda memahami keputusan keuangan sehari-hari.</p>
         </div>
     </div>
 
@@ -92,17 +92,17 @@
     <div>
 
         <h2>
-            Ready to feel more in control?
+            Siap mengelola keuangan dengan lebih baik?
         </h2>
 
         <p>
-            Start with one small step: bring your everyday finances into focus.
+            Mulai dengan langkah sederhana: catat keuangan harian Anda.
         </p>
 
         @auth
-            <a href="{{ route('dashboard') }}" class="button primary">Open dashboard</a>
+            <a href="{{ route('dashboard') }}" class="button primary">Buka Dasbor</a>
         @else
-            <a href="{{ route('register') }}" class="button primary">Create your account</a>
+            <a href="{{ route('register') }}" class="button primary">Buat Akun</a>
         @endauth
 
     </div>

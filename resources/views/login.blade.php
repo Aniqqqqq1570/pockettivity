@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Log In | Pockettivity')
+@section('title', 'Masuk | Pockettivity')
 
 @section('content')
 
@@ -13,14 +13,14 @@
             <span>pockettivity</span>
         </a>
 
-        <p class="small-title">YOUR FINANCES, IN FOCUS</p>
+        <p class="small-title">KEUANGAN ANDA, LEBIH TERARAH</p>
 
         <h2>
-            Welcome back
+            Selamat datang kembali
         </h2>
 
         <p>
-            Sign in to your Pockettivity account.
+            Masuk ke akun Pockettivity Anda.
         </p>
 
         @include('partials.ui-alerts', ['alertClass' => 'auth-message'])
@@ -30,40 +30,40 @@
             @csrf
 
             <label>
-                Your email address
+                Alamat email
             </label>
 
             <input
                 type="email"
                 name="email"
-                placeholder="you@example.com"
+                placeholder="nama@contoh.com"
                 value="{{ old('email') }}"
                 required
             >
 
             <label>
-                Your password
+                Kata sandi
             </label>
 
             <input
                 type="password"
                 name="password"
-                placeholder="Enter your password"
+                placeholder="Masukkan kata sandi"
                 required
             >
 
             <button type="submit">
-                Log In
+                Masuk
             </button>
 
         </form>
 
         <p class="register-text">
 
-            New to Pockettivity?
+            Belum memiliki akun Pockettivity?
 
             <a href="{{ route('register') }}">
-                Create an account
+                Buat akun
             </a>
 
         </p>

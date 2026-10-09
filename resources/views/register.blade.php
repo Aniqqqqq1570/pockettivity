@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Create Account | Pockettivity')
+@section('title', 'Buat Akun | Pockettivity')
 
 @section('content')
 
@@ -13,14 +13,14 @@
             <span>pockettivity</span>
         </a>
 
-        <p class="small-title">START WITH A CLEARER PICTURE</p>
+        <p class="small-title">MULAI DENGAN GAMBARAN YANG JELAS</p>
 
         <h2>
-            Create your account
+            Buat akun Anda
         </h2>
 
         <p>
-            Build a simple habit of understanding your money.
+            Bangun kebiasaan sederhana untuk memahami keuangan Anda.
         </p>
 
         @include('partials.ui-alerts', ['alertClass' => 'auth-message'])
@@ -30,63 +30,62 @@
             @csrf
 
             <label>
-                Your name
+                Nama
             </label>
 
             <input
                 type="text"
                 name="name"
-                placeholder="Your name"
+                placeholder="Nama Anda"
                 value="{{ old('name') }}"
                 required
             >
 
             <label>
-                Your email address
+                Alamat email
             </label>
 
             <input
                 type="email"
                 name="email"
-                placeholder="you@example.com"
+                placeholder="nama@contoh.com"
                 value="{{ old('email') }}"
                 required
             >
 
             <label>
-                Create a password
+                Buat kata sandi
             </label>
 
             <input
                 type="password"
                 name="password"
-                placeholder="Create a password"
+                placeholder="Buat kata sandi"
                 required
             >
 
             <label>
-                Confirm your password
+                Ulangi kata sandi
             </label>
 
             <input
                 type="password"
                 name="password_confirmation"
-                placeholder="Confirm your password"
+                placeholder="Ulangi kata sandi"
                 required
             >
 
             <button type="submit">
-                Create Account
+                Buat Akun
             </button>
 
         </form>
 
         <p class="register-text">
 
-            Already have an account?
+            Sudah memiliki akun?
 
-            <a href="{{ route('login') }}">
-                Log In
+            <a href="{{ route('login') }}">Masuk</a>
             </a>
 
         </p>

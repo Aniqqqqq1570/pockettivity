@@ -8,6 +8,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BudgetController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MonthlyStatementController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +41,15 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])
         ->name('dashboard');
+
+    Route::get('/monthly-statement', [MonthlyStatementController::class, 'index'])
+        ->name('monthly-statement');
+
+    Route::get('/monthly-statement/print', [MonthlyStatementController::class, 'print'])
+        ->name('monthly-statement.print');
+
+    Route::get('/monthly-statement/pdf', [MonthlyStatementController::class, 'download'])
+        ->name('monthly-statement.pdf');
 
     Route::get('/categories', [CategoryController::class, 'index'])
         ->name('categories');

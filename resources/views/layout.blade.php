@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
 
@@ -13,6 +13,9 @@
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pockettivity-theme.css') }}">
+    @if(request()->routeIs('monthly-statement*'))
+        <link rel="stylesheet" href="{{ asset('css/monthly-statement.css') }}">
+    @endif
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -33,36 +36,37 @@
                 <span>pockettivity</span>
             </a>
 
-            <input type="checkbox" class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+            <input type="checkbox" class="nav-toggle" id="nav-toggle" aria-label="Buka atau tutup navigasi">
             <label class="nav-toggle-label" for="nav-toggle">
                 <span></span>
                 <span></span>
-                <span class="visually-hidden">Toggle navigation</span>
+                <span class="visually-hidden">Buka atau tutup navigasi</span>
             </label>
 
             <div class="nav-menu">
                 @auth
                     @if(auth()->user()->role === 'admin')
-                        <a class="{{ request()->routeIs('admin.dashboard') ? 'is-current' : '' }}" href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
-                        <a class="{{ request()->routeIs('admin.users') ? 'is-current' : '' }}" href="{{ route('admin.users') }}">User Management</a>
-                        <a class="{{ request()->routeIs('admin.transactions') ? 'is-current' : '' }}" href="{{ route('admin.transactions') }}">Transactions</a>
+                        <a class="{{ request()->routeIs('admin.dashboard') ? 'is-current' : '' }}" href="{{ route('admin.dashboard') }}">Dasbor Admin</a>
+                        <a class="{{ request()->routeIs('admin.users') ? 'is-current' : '' }}" href="{{ route('admin.users') }}">Kelola Pengguna</a>
+                        <a class="{{ request()->routeIs('admin.transactions') ? 'is-current' : '' }}" href="{{ route('admin.transactions') }}">Transaksi</a>
                     @else
-                        <a class="{{ request()->routeIs('dashboard') ? 'is-current' : '' }}" href="{{ route('dashboard') }}">Dashboard</a>
-                        <a class="{{ request()->routeIs('transactions*') ? 'is-current' : '' }}" href="{{ route('transactions') }}">Transactions</a>
-                        <a class="{{ request()->routeIs('categories*') ? 'is-current' : '' }}" href="{{ route('categories') }}">Categories</a>
-                        <a class="{{ request()->routeIs('analysis') ? 'is-current' : '' }}" href="{{ route('analysis') }}">Analysis</a>
-                        <a class="{{ request()->routeIs('budgets*') ? 'is-current' : '' }}" href="{{ route('budgets') }}">Budgets</a>
+                        <a class="{{ request()->routeIs('dashboard') ? 'is-current' : '' }}" href="{{ route('dashboard') }}">Dasbor</a>
+                        <a class="{{ request()->routeIs('transactions*') ? 'is-current' : '' }}" href="{{ route('transactions') }}">Transaksi</a>
+                        <a class="{{ request()->routeIs('categories*') ? 'is-current' : '' }}" href="{{ route('categories') }}">Kategori</a>
+                        <a class="{{ request()->routeIs('analysis') ? 'is-current' : '' }}" href="{{ route('analysis') }}">Analisis</a>
+                        <a class="{{ request()->routeIs('budgets*') ? 'is-current' : '' }}" href="{{ route('budgets') }}">Anggaran</a>
+                        <a class="{{ request()->routeIs('monthly-statement*') ? 'is-current' : '' }}" href="{{ route('monthly-statement') }}">Mutasi Bulanan</a>
                     @endif
-                    <a class="nav-profile {{ request()->routeIs('profile*') ? 'is-current' : '' }}" href="{{ route('profile') }}">Profile</a>
+                    <a class="nav-profile {{ request()->routeIs('profile*') ? 'is-current' : '' }}" href="{{ route('profile') }}">Profil</a>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button type="submit" class="nav-login-button nav-logout-button">Log Out</button>
+                        <button type="submit" class="nav-login-button nav-logout-button">Keluar</button>
                     </form>
                 @else
-                    <a class="{{ request()->routeIs('home') ? 'is-current' : '' }}" href="{{ route('home') }}">Home</a>
-                    <a class="{{ request()->routeIs('about') ? 'is-current' : '' }}" href="{{ route('about') }}">About</a>
-                    <a class="{{ request()->routeIs('features') ? 'is-current' : '' }}" href="{{ route('features') }}">Features</a>
-                    <a href="{{ route('login') }}" class="nav-login-button">Log In</a>
+                    <a class="{{ request()->routeIs('home') ? 'is-current' : '' }}" href="{{ route('home') }}">Beranda</a>
+                    <a class="{{ request()->routeIs('about') ? 'is-current' : '' }}" href="{{ route('about') }}">Tentang</a>
+                    <a class="{{ request()->routeIs('features') ? 'is-current' : '' }}" href="{{ route('features') }}">Fitur</a>
+                    <a href="{{ route('login') }}" class="nav-login-button">Masuk</a>
                 @endauth
             </div>
 
@@ -73,6 +77,7 @@
 
     @yield('content')
 
+    <script src="{{ asset('js/money-input.js') }}" defer></script>
 
     <footer>
         <p>Copyright © Pockettivity</p>

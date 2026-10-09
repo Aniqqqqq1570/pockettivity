@@ -150,7 +150,7 @@ class FinancialAnalysisTest extends TestCase
 
         $this->get(route('analysis'))
             ->assertOk()
-            ->assertSee('AI analysis could not be generated right now.')
+            ->assertSee('Analisis AI gagal dibuat. Silakan coba lagi beberapa saat.')
             ->assertDontSee('secret provider response');
     }
 }

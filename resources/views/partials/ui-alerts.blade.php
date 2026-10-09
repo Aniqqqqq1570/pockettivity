@@ -1,67 +1,67 @@
 @php
     $successMessages = [
-        'Register berhasil. Silakan login.' => 'Your account is ready. Sign in to continue.',
-        'Transaksi berhasil disimpan.' => 'Transaction added.',
-        'Transaksi berhasil diperbarui.' => 'Transaction updated.',
-        'Transaksi berhasil dihapus.' => 'Transaction deleted.',
-        'Kategori berhasil disimpan.' => 'Category added.',
-        'Kategori berhasil diperbarui.' => 'Category updated.',
-        'Kategori berhasil dihapus.' => 'Category deleted.',
-        'Budget berhasil disimpan.' => 'Budget added.',
-        'Budget berhasil diperbarui.' => 'Budget updated.',
-        'Budget berhasil dihapus.' => 'Budget deleted.',
-        'Profil berhasil diperbarui.' => 'Profile updated.',
-        'Password berhasil diperbarui.' => 'Password updated.',
-        'User berhasil dijadikan admin.' => 'User role changed to Admin.',
-        'Admin berhasil dijadikan user.' => 'User role changed to Standard User.',
+        'Register berhasil. Silakan login.' => 'Pendaftaran berhasil. Silakan masuk.',
+        'Transaksi berhasil disimpan.' => 'Transaksi berhasil disimpan.',
+        'Transaksi berhasil diperbarui.' => 'Transaksi berhasil diperbarui.',
+        'Transaksi berhasil dihapus.' => 'Transaksi berhasil dihapus.',
+        'Kategori berhasil disimpan.' => 'Kategori berhasil disimpan.',
+        'Kategori berhasil diperbarui.' => 'Kategori berhasil diperbarui.',
+        'Kategori berhasil dihapus.' => 'Kategori berhasil dihapus.',
+        'Budget berhasil disimpan.' => 'Anggaran berhasil disimpan.',
+        'Budget berhasil diperbarui.' => 'Anggaran berhasil diperbarui.',
+        'Budget berhasil dihapus.' => 'Anggaran berhasil dihapus.',
+        'Profil berhasil diperbarui.' => 'Profil berhasil diperbarui.',
+        'Password berhasil diperbarui.' => 'Kata sandi berhasil diperbarui.',
+        'User berhasil dijadikan admin.' => 'Peran berhasil diubah menjadi admin.',
+        'Admin berhasil dijadikan user.' => 'Peran berhasil diubah menjadi pengguna.',
     ];
 
     $messageTranslations = [
-        'Email atau password salah.' => 'The email address or password is incorrect.',
-        'Nama wajib diisi.' => 'Enter your name.',
-        'Email wajib diisi.' => 'Enter your email address.',
-        'Email tidak valid.' => 'Enter a valid email address.',
-        'Email sudah digunakan.' => 'An account with this email address already exists.',
-        'Password wajib diisi.' => 'Enter your password.',
-        'Password minimal 6 karakter.' => 'Use a password with at least 6 characters.',
-        'Konfirmasi password tidak cocok.' => 'The passwords do not match.',
-        'Password saat ini tidak sesuai.' => 'Your current password is incorrect.',
-        'Jenis transaksi tidak valid.' => 'Choose a valid transaction type.',
-        'Kategori wajib dipilih.' => 'Choose a category.',
-        'Kategori tidak valid.' => 'Choose a valid category.',
-        'Nominal wajib diisi.' => 'Enter an amount.',
-        'Nominal harus berupa angka.' => 'Enter a valid amount.',
-        'Nominal harus lebih dari nol.' => 'Enter an amount greater than zero.',
-        'Keterangan wajib diisi.' => 'Enter a description.',
-        'Keterangan maksimal 255 karakter.' => 'Keep the description under 255 characters.',
-        'Tanggal wajib diisi.' => 'Choose a date.',
-        'Tanggal tidak valid.' => 'Choose a valid date.',
-        'Tanggal akhir harus sama atau setelah tanggal awal.' => 'The end date must be on or after the start date.',
-        'Nama kategori wajib diisi.' => 'Enter a category name.',
-        'Nama kategori sudah digunakan.' => 'You already have a category with this name.',
-        'Budget untuk kategori dan periode ini sudah ada.' => 'A budget already exists for this category and period.',
-        'Bulan tidak valid.' => 'Choose a valid month.',
-        'Tahun tidak valid.' => 'Enter a valid year.',
-        'Kamu tidak dapat menghapus role admin sendiri.' => 'You cannot remove your own admin access.',
-        'Analisis AI belum tersedia. Tambahkan OPENAI_API_KEY pada konfigurasi aplikasi.' => 'AI analysis is not set up yet. Add OPENAI_API_KEY to the server environment.',
-        'Analisis AI sedang mengalami kendala. Coba lagi beberapa saat lagi.' => 'AI analysis could not be generated right now. Please try again shortly.',
+        'Email atau password salah.' => 'Email atau kata sandi salah.',
+        'Nama wajib diisi.' => 'Nama wajib diisi.',
+        'Email wajib diisi.' => 'Alamat email wajib diisi.',
+        'Email tidak valid.' => 'Alamat email tidak valid.',
+        'Email sudah digunakan.' => 'Alamat email sudah digunakan.',
+        'Password wajib diisi.' => 'Kata sandi wajib diisi.',
+        'Password minimal 6 karakter.' => 'Kata sandi minimal 6 karakter.',
+        'Konfirmasi password tidak cocok.' => 'Konfirmasi kata sandi tidak cocok.',
+        'Password saat ini tidak sesuai.' => 'Kata sandi saat ini tidak sesuai.',
+        'Jenis transaksi tidak valid.' => 'Pilih jenis transaksi yang valid.',
+        'Kategori wajib dipilih.' => 'Kategori wajib dipilih.',
+        'Kategori tidak valid.' => 'Pilih kategori yang valid.',
+        'Nominal wajib diisi.' => 'Nominal wajib diisi.',
+        'Nominal harus berupa angka.' => 'Masukkan nominal yang valid.',
+        'Nominal harus lebih dari nol.' => 'Nominal harus lebih dari nol.',
+        'Keterangan wajib diisi.' => 'Keterangan wajib diisi.',
+        'Keterangan maksimal 255 karakter.' => 'Keterangan maksimal 255 karakter.',
+        'Tanggal wajib diisi.' => 'Tanggal wajib diisi.',
+        'Tanggal tidak valid.' => 'Pilih tanggal yang valid.',
+        'Tanggal akhir harus sama atau setelah tanggal awal.' => 'Tanggal akhir harus sama atau setelah tanggal awal.',
+        'Nama kategori wajib diisi.' => 'Nama kategori wajib diisi.',
+        'Nama kategori sudah digunakan.' => 'Nama kategori sudah digunakan.',
+        'Budget untuk kategori dan periode ini sudah ada.' => 'Anggaran untuk kategori dan periode ini sudah ada.',
+        'Bulan tidak valid.' => 'Pilih bulan yang valid.',
+        'Tahun tidak valid.' => 'Masukkan tahun yang valid.',
+        'Kamu tidak dapat menghapus role admin sendiri.' => 'Anda tidak dapat menghapus peran admin sendiri.',
+        'Analisis AI belum tersedia. Tambahkan OPENAI_API_KEY pada konfigurasi aplikasi.' => 'Analisis AI belum tersedia. Tambahkan OPENAI_API_KEY pada konfigurasi aplikasi.',
+        'Analisis AI sedang mengalami kendala. Coba lagi beberapa saat lagi.' => 'Analisis AI gagal dibuat. Silakan coba lagi beberapa saat.',
     ];
 
     $fieldMessages = [
-        'name' => 'Enter a valid name.',
-        'email' => 'Enter a valid email address.',
-        'password' => 'Check your password and try again.',
-        'password_confirmation' => 'The passwords do not match.',
-        'current_password' => 'Your current password is incorrect.',
-        'type' => 'Choose a valid transaction type.',
-        'category_id' => 'Choose a valid category.',
-        'amount' => 'Enter a valid amount.',
-        'description' => 'Enter a valid description.',
-        'date' => 'Choose a valid date.',
-        'date_from' => 'Choose a valid start date.',
-        'date_to' => 'Choose an end date on or after the start date.',
-        'month' => 'Choose a valid month.',
-        'year' => 'Enter a valid year.',
+        'name' => 'Masukkan nama yang valid.',
+        'email' => 'Masukkan alamat email yang valid.',
+        'password' => 'Periksa kembali kata sandi Anda.',
+        'password_confirmation' => 'Konfirmasi kata sandi tidak cocok.',
+        'current_password' => 'Kata sandi saat ini tidak sesuai.',
+        'type' => 'Pilih jenis transaksi yang valid.',
+        'category_id' => 'Pilih kategori yang valid.',
+        'amount' => 'Masukkan nominal yang valid.',
+        'description' => 'Masukkan keterangan yang valid.',
+        'date' => 'Pilih tanggal yang valid.',
+        'date_from' => 'Pilih tanggal awal yang valid.',
+        'date_to' => 'Pilih tanggal akhir setelah tanggal awal.',
+        'month' => 'Pilih bulan yang valid.',
+        'year' => 'Masukkan tahun yang valid.',
     ];
 
     $successMessage = session('success');
@@ -72,7 +72,7 @@
         foreach ($messages as $message) {
             $displayErrors[] = $messageTranslations[$message]
                 ?? $fieldMessages[$field]
-                ?? 'Please review your information and try again.';
+                ?? 'Periksa kembali data yang Anda masukkan.';
         }
     }
     $displayErrors = array_values(array_unique($displayErrors));
@@ -80,7 +80,7 @@
     $sessionError = session('error') ?? session('ai_error');
     if ($sessionError) {
         $displayErrors[] = $messageTranslations[$sessionError]
-            ?? 'Something went wrong. Please try again.';
+            ?? 'Terjadi kesalahan. Silakan coba lagi.';
     }
 @endphp
 

@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'About Pockettivity')
+@section('title', 'Tentang Pockettivity')
 
 @section('content')
 
@@ -9,41 +9,41 @@
     <div class="about-container">
 
         <p class="small-title">
-            ABOUT POCKETTIVITY
+            TENTANG POCKETTIVITY
         </p>
 
         <h1>
-            Personal finance, made clearer
+            Keuangan pribadi yang lebih jelas
         </h1>
 
         <p>
-            Pockettivity helps you keep your personal finances organized in one simple workspace.
+            Pockettivity membantu Anda menata keuangan pribadi dalam satu ruang kerja yang sederhana.
         </p>
 
         <p>
-            Record income and expenses, organize transactions by category, set monthly budgets, and understand your spending over time.
+            Catat pemasukan dan pengeluaran, kelompokkan transaksi, tetapkan anggaran bulanan, dan pahami pola pengeluaran Anda.
         </p>
 
         <div class="about-card">
 
             <h2>
-                Our purpose
+                Tujuan Kami
             </h2>
 
             <p>
-                Make everyday money management easier to follow, so you can make informed choices with a clearer view of your finances.
+                Memudahkan pengelolaan uang sehari-hari agar Anda dapat mengambil keputusan dengan gambaran keuangan yang lebih jelas.
             </p>
 
         </div>
 
         <div class="about-card">
-            <h2>Why track your finances?</h2>
-            <p>Consistent records help you understand spending patterns, plan for monthly needs, and set priorities based on your actual activity.</p>
-            <p>Pockettivity brings transactions, categories, budgets, and summaries together in one clear view.</p>
+            <h2>Mengapa mencatat keuangan?</h2>
+            <p>Catatan yang teratur membantu Anda memahami pola pengeluaran, merencanakan kebutuhan bulanan, dan menentukan prioritas berdasarkan aktivitas nyata.</p>
+            <p>Pockettivity menyatukan transaksi, kategori, anggaran, dan ringkasan dalam satu tampilan.</p>
         </div>
 
         <a href="{{ route('home') }}" class="button primary">
-            Back to Home
+            Kembali ke Beranda
         </a>
 
     </div>

@@ -1,7 +1,7 @@
 
 @extends('layout')
 
-@section('title', 'Transactions | Pockettivity')
+@section('title', 'Transaksi | Pockettivity')
 
 @section('content')
 
@@ -14,15 +14,15 @@
             <div>
 
                 <p class="small-title">
-                    TRANSACTIONS
+                    TRANSAKSI
                 </p>
 
                 <h1>
-                    Transactions
+                    Transaksi
                 </h1>
 
                 <p>
-                    Record and review your income and expenses in one place.
+                    Catat dan tinjau pemasukan serta pengeluaran Anda.
                 </p>
 
             </div>
@@ -32,46 +32,46 @@
 
         <form action="{{ route('transactions') }}" method="GET" class="transaction-filter-form">
             <div>
-                <label for="search">Search description</label>
-                <input id="search" type="search" name="search" value="{{ $filters['search'] ?? '' }}" placeholder="Search transactions">
+                <label for="search">Cari keterangan</label>
+                <input id="search" type="search" name="search" value="{{ $filters['search'] ?? '' }}" placeholder="Cari transaksi">
             </div>
             <div>
-                <label for="filter_type">Type</label>
+                <label for="filter_type">Jenis</label>
                 <select id="filter_type" name="type">
-                    <option value="">All types</option>
-                    <option value="pemasukan" {{ ($filters['type'] ?? '') === 'pemasukan' ? 'selected' : '' }}>Income</option>
-                    <option value="pengeluaran" {{ ($filters['type'] ?? '') === 'pengeluaran' ? 'selected' : '' }}>Expense</option>
+                    <option value="">Semua jenis</option>
+                    <option value="pemasukan" {{ ($filters['type'] ?? '') === 'pemasukan' ? 'selected' : '' }}>Pemasukan</option>
+                    <option value="pengeluaran" {{ ($filters['type'] ?? '') === 'pengeluaran' ? 'selected' : '' }}>Pengeluaran</option>
                 </select>
             </div>
             <div>
-                <label for="filter_category">Category</label>
+                <label for="filter_category">Kategori</label>
                 <select id="filter_category" name="category_id">
-                    <option value="">All categories</option>
+                    <option value="">Semua kategori</option>
                     @foreach($categories as $category)
                         <option value="{{ $category->id }}" {{ ($filters['category_id'] ?? '') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                     @endforeach
                 </select>
             </div>
             <div>
-                <label for="date_from">From</label>
+                <label for="date_from">Dari tanggal</label>
                 <input id="date_from" type="date" name="date_from" value="{{ $filters['date_from'] ?? '' }}">
             </div>
             <div>
-                <label for="date_to">To</label>
+                <label for="date_to">Sampai tanggal</label>
                 <input id="date_to" type="date" name="date_to" value="{{ $filters['date_to'] ?? '' }}">
             </div>
             <div>
-                <label for="sort">Sort by</label>
+                <label for="sort">Urutkan</label>
                 <select id="sort" name="sort">
-                    <option value="newest" {{ ($filters['sort'] ?? 'newest') === 'newest' ? 'selected' : '' }}>Newest</option>
-                    <option value="oldest" {{ ($filters['sort'] ?? '') === 'oldest' ? 'selected' : '' }}>Oldest</option>
-                    <option value="highest" {{ ($filters['sort'] ?? '') === 'highest' ? 'selected' : '' }}>Highest amount</option>
-                    <option value="lowest" {{ ($filters['sort'] ?? '') === 'lowest' ? 'selected' : '' }}>Lowest amount</option>
+                    <option value="newest" {{ ($filters['sort'] ?? 'newest') === 'newest' ? 'selected' : '' }}>Terbaru</option>
+                    <option value="oldest" {{ ($filters['sort'] ?? '') === 'oldest' ? 'selected' : '' }}>Terlama</option>
+                    <option value="highest" {{ ($filters['sort'] ?? '') === 'highest' ? 'selected' : '' }}>Nominal terbesar</option>
+                    <option value="lowest" {{ ($filters['sort'] ?? '') === 'lowest' ? 'selected' : '' }}>Nominal terkecil</option>
                 </select>
             </div>
             <div class="transaction-filter-actions">
-                <button type="submit" class="transaction-button">Apply Filters</button>
-                <a href="{{ route('transactions') }}" class="button secondary">Clear Filters</a>
+                <button type="submit" class="transaction-button">Terapkan Filter</button>
+                <a href="{{ route('transactions') }}" class="button secondary">Hapus Filter</a>
             </div>
         </form>
 
@@ -96,11 +96,11 @@
             <div class="summary-box">
 
                 <span>
-                    Total Income
+                    Total Pemasukan
                 </span>
 
                 <h2>
-                    Rp {{ number_format($income, 0, ',', '.') }}
+                    {{ \App\Support\MoneyFormatter::format($income) }}
                 </h2>
 
             </div>
@@ -109,11 +109,11 @@
             <div class="summary-box">
 
                 <span>
-                    Total Expenses
+                    Total Pengeluaran
                 </span>
 
                 <h2>
-                    Rp {{ number_format($expense, 0, ',', '.') }}
+                    {{ \App\Support\MoneyFormatter::format($expense) }}
                 </h2>
 
             </div>
@@ -122,11 +122,11 @@
             <div class="summary-box">
 
                 <span>
-                    Balance
+                    Saldo
                 </span>
 
                 <h2>
-                    Rp {{ number_format($balance, 0, ',', '.') }}
+                    {{ \App\Support\MoneyFormatter::format($balance) }}
                 </h2>
 
             </div>
@@ -140,11 +140,11 @@
             <div class="transaction-form dashboard-card" id="transaction-entry">
 
                 <h3>
-                    Add Transaction
+                    Tambah Transaksi
                 </h3>
 
                 <p>
-                    Add an income or expense record.
+                    Tambahkan catatan pemasukan atau pengeluaran.
                 </p>
 
 
@@ -159,28 +159,28 @@
                     @csrf
 
 
-                    <label>
-                        Type
+                    <label for="transaction-type">
+                        Jenis
                     </label>
 
-                    <select name="type" required>
+                    <select id="transaction-type" name="type" required>
 
                         <option value="pemasukan" {{ old('type', $defaultType) === 'pemasukan' ? 'selected' : '' }}>
-                            Income
+                            Pemasukan
                         </option>
 
                         <option value="pengeluaran" {{ old('type', $defaultType) === 'pengeluaran' ? 'selected' : '' }}>
-                            Expense
+                            Pengeluaran
                         </option>
 
                     </select>
 
                     <label for="category_id">
-                        Category
+                        Kategori
                     </label>
 
                     <select name="category_id" id="category_id" required>
-                        <option value="">Select a category</option>
+                        <option value="">Pilih kategori</option>
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
                                 {{ $category->name }}
@@ -190,38 +190,43 @@
 
                     @if($categories->isEmpty())
                         <p class="form-hint">
-                            Create a category before adding transactions.
-                            <a href="{{ route('categories') }}">Manage Categories</a>
+                            Buat kategori sebelum menambahkan transaksi.
+                            <a href="{{ route('categories') }}">Kelola Kategori</a>
                         </p>
                     @endif
 
 
-                    <label>
-                        Amount
+                    <label for="transaction-amount">
+                        Nominal
                     </label>
 
                     <input
-                        type="number"
+                        id="transaction-amount"
+                        type="text"
                         name="amount"
-                        placeholder="e.g. 500000"
+                        data-money-input
+                        data-money-min="0.01"
+                        value="{{ \App\Support\MoneyFormatter::forInput(old('amount')) }}"
+                        placeholder="Contoh: 500.000"
+                        autocomplete="off"
                         required
                     >
 
 
                     <label>
-                        Description
+                        Keterangan
                     </label>
 
                     <input
                         type="text"
                         name="description"
-                        placeholder="e.g. Salary, groceries, or transport"
+                        placeholder="Contoh: gaji, belanja, atau transportasi"
                         required
                     >
 
 
                     <label>
-                        Date
+                        Tanggal
                     </label>
 
                     <input
@@ -235,7 +240,7 @@
                         type="submit"
                         class="transaction-button"
                     >
-                        Add Transaction
+                        Tambah Transaksi
                     </button>
 
                 </form>
@@ -250,11 +255,11 @@
                     <div>
 
                         <h3>
-                            Transaction History
+                            Riwayat Transaksi
                         </h3>
 
                         <p>
-                            Your recent activity
+                            Aktivitas terbaru Anda
                         </p>
 
                     </div>
@@ -296,7 +301,7 @@
                                     </span>
 
                                     <span class="transaction-category">
-                                        {{ $transaction->category?->name ?? 'Uncategorized' }}
+                                        {{ $transaction->category?->name ?? 'Tanpa kategori' }}
                                     </span>
 
                                 </div>
@@ -307,21 +312,21 @@
                                     @if($transaction->type == 'pemasukan')
 
                                         <strong class="income">
-                                            + Rp {{ number_format($transaction->amount, 0, ',', '.') }}
+                                            + {{ \App\Support\MoneyFormatter::format($transaction->amount) }}
                                         </strong>
 
                                         <span class="income-label">
-                                            Income
+                                            Pemasukan
                                         </span>
 
                                     @else
 
                                         <strong class="expense">
-                                            - Rp {{ number_format($transaction->amount, 0, ',', '.') }}
+                                            - {{ \App\Support\MoneyFormatter::format($transaction->amount) }}
                                         </strong>
 
                                         <span class="expense-label">
-                                            Expense
+                                            Pengeluaran
                                         </span>
 
                                     @endif
@@ -333,14 +338,14 @@
                                     href="{{ route('transactions.edit', $transaction->id) }}"
                                     class="edit-button"
                                 >
-                                    Edit
+                                    Ubah
                                 </a>
 
 
                                 <form
                                     action="{{ route('transactions.destroy', $transaction->id) }}"
                                     method="POST"
-                                    onsubmit="return confirm('Delete this transaction? This action cannot be undone.')"
+                                    onsubmit="return confirm('Yakin ingin menghapus transaksi ini? Tindakan ini tidak dapat dibatalkan.')"
                                 >
 
                                     @csrf
@@ -351,7 +356,7 @@
                                         type="submit"
                                         class="delete-button"
                                     >
-                                        Delete
+                                        Hapus
                                     </button>
 
                                 </form>
@@ -371,13 +376,13 @@
                         </div>
 
                         <h4>
-                            No transactions yet
+                            Belum ada transaksi
                         </h4>
 
                         <p>
-                            Add your first transaction using the form beside this history.
+                            Tambahkan transaksi pertama melalui formulir di samping riwayat ini.
                         </p>
-                        <a href="#transaction-entry" class="button primary">Add Transaction</a>
+                        <a href="#transaction-entry" class="button primary">Tambah Transaksi</a>
 
                     </div>
 
@@ -392,11 +397,11 @@
             href="{{ route('features') }}"
             class="button secondary"
         >
-            Back to Features
+            Kembali ke Fitur
         </a>
 
         <a href="{{ route('categories') }}" class="button secondary">
-            Manage Categories
+            Kelola Kategori
         </a>
 
     </div>

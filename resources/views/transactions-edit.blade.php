@@ -1,7 +1,7 @@
 
 @extends('layout')
 
-@section('title', 'Edit Transaction | Pockettivity')
+@section('title', 'Ubah Transaksi | Pockettivity')
 
 @section('content')
 
@@ -12,15 +12,15 @@
         <div class="transaction-form dashboard-card">
 
             <p class="small-title">
-                EDIT TRANSACTION
+                UBAH TRANSAKSI
             </p>
 
             <h1>
-                Edit Transaction
+                Ubah Transaksi
             </h1>
 
             <p>
-                Update the details for this transaction.
+                Perbarui detail transaksi ini.
             </p>
 
 
@@ -38,7 +38,7 @@
 
 
                 <label>
-                    Type
+                    Jenis
                 </label>
 
                 <select name="type" required>
@@ -47,24 +47,24 @@
                         value="pemasukan"
                         {{ $transaction->type == 'pemasukan' ? 'selected' : '' }}
                     >
-                        Income
+                        Pemasukan
                     </option>
 
                     <option
                         value="pengeluaran"
                         {{ $transaction->type == 'pengeluaran' ? 'selected' : '' }}
                     >
-                        Expense
+                        Pengeluaran
                     </option>
 
                 </select>
 
                 <label for="category_id">
-                    Category
+                    Kategori
                 </label>
 
                 <select name="category_id" id="category_id" required>
-                    <option value="">Select a category</option>
+                    <option value="">Pilih kategori</option>
                     @foreach($categories as $category)
                         <option value="{{ $category->id }}" {{ old('category_id', $transaction->category_id) == $category->id ? 'selected' : '' }}>
                             {{ $category->name }}
@@ -74,26 +74,30 @@
 
                 @if($categories->isEmpty())
                     <p class="form-hint">
-                        Create a category before editing this transaction.
-                        <a href="{{ route('categories') }}">Manage Categories</a>
+                        Buat kategori sebelum mengubah transaksi ini.
+                        <a href="{{ route('categories') }}">Kelola Kategori</a>
                     </p>
                 @endif
 
 
-                <label>
-                    Amount
+                <label for="transaction-amount">
+                    Nominal
                 </label>
 
                 <input
-                    type="number"
+                    id="transaction-amount"
+                    type="text"
                     name="amount"
-                    value="{{ $transaction->amount }}"
+                    data-money-input
+                    data-money-min="0.01"
+                    value="{{ \App\Support\MoneyFormatter::forInput(old('amount', $transaction->amount)) }}"
+                    autocomplete="off"
                     required
                 >
 
 
                 <label>
-                    Description
+                    Keterangan
                 </label>
 
                 <input
@@ -105,7 +109,7 @@
 
 
                 <label>
-                    Date
+                    Tanggal
                 </label>
 
                 <input
@@ -120,7 +124,7 @@
                     type="submit"
                     class="transaction-button"
                 >
-                    Save Changes
+                    Simpan Perubahan
                 </button>
 
             </form>
@@ -133,7 +137,7 @@
                 href="{{ route('transactions') }}"
                 class="button secondary"
             >
-                Cancel
+                Batal
             </a>
 
         </div>

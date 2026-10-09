@@ -1999,6 +1999,37 @@ footer {
     margin: 20px 0;
 }
 
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.pagination-controls a,
+.pagination-controls span {
+    display: inline-flex;
+    min-height: 38px;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 12px;
+    border: 1px solid #c9dcf5;
+    border-radius: 5px;
+    color: #1769e0;
+    text-align: center;
+    text-decoration: none;
+}
+
+.pagination-controls span[aria-disabled="true"] {
+    color: #64748b;
+    opacity: .7;
+}
+
+.pagination-controls .pagination-current {
+    border-color: transparent;
+    color: #334155;
+}
+
 .admin-button {
     display: inline-block;
 
@@ -2016,6 +2047,38 @@ footer {
 
 .admin-button:hover {
     background: #1d4ed8;
+}
+
+.button,
+.transaction-button,
+.edit-button,
+.delete-button,
+.role-button,
+.admin-button,
+.login-box button {
+    box-sizing: border-box;
+    max-width: 100%;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+    text-align: center;
+    white-space: normal;
+}
+
+@media (max-width: 600px) {
+    .transaction-filter-actions,
+    .admin-filter-actions {
+        flex-wrap: wrap;
+    }
+
+    .role-button {
+        width: 100%;
+    }
+
+    .pagination-controls a,
+    .pagination-controls span {
+        padding: 6px 8px;
+        font-size: 12px;
+    }
 }
 
 

@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use RuntimeException;
 
 class AuthController extends Controller
 {
@@ -53,7 +55,18 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        if (Auth::attempt($credentials)) {
+        try {
+            $authenticated = Auth::attempt($credentials);
+        } catch (RuntimeException $exception) {
+            if ($exception->getMessage() !== 'This password does not use the Bcrypt algorithm.') {
+                throw $exception;
+            }
+
+            Log::warning('Login rejected because the stored password hash is not compatible with the configured hasher.');
+            $authenticated = false;
+        }
+
+        if ($authenticated) {
 
             $request->session()->regenerate();
 

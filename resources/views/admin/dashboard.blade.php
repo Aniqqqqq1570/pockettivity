@@ -1,7 +1,7 @@
 
 @extends('layout')
 
-@section('title', 'Admin Dashboard | Pockettivity')
+@section('title', 'Dasbor Admin | Pockettivity')
 
 @section('content')
 
@@ -12,31 +12,31 @@
         <div class="admin-header">
 
             <p class="small-title">
-                ADMIN PANEL
+                    PANEL ADMIN
             </p>
 
             <h1>
-                Admin Dashboard
+                Dasbor Admin
             </h1>
 
             <p>
-                Welcome, {{ Auth::user()->name }}.
+                Selamat datang, {{ Auth::user()->name }}.
             </p>
 
         </div>
 
 
-        <nav class="admin-shortcuts" aria-label="Admin shortcuts">
+        <nav class="admin-shortcuts" aria-label="Pintasan admin">
 
             <a
                 href="{{ route('admin.users') }}"
                 class="admin-shortcut-link"
             >
-                User Management
+                Kelola Pengguna
             </a>
 
             <a href="{{ route('admin.transactions') }}" class="admin-shortcut-link">
-                Transactions
+                Transaksi
             </a>
 
         </nav>
@@ -52,7 +52,7 @@
 
                 <div>
                     <span>
-                        Total Users
+                        Total Pengguna
                     </span>
 
                     <h2>
@@ -70,7 +70,7 @@
                 </div>
 
                 <div>
-                    <span>Total Admins</span>
+                    <span>Total Admin</span>
                     <h2>{{ $admins }}</h2>
                 </div>
 
@@ -84,7 +84,7 @@
                 </div>
 
                 <div>
-                    <span>Standard Users</span>
+                    <span>Pengguna</span>
                     <h2>{{ $normalUsers }}</h2>
                 </div>
 
@@ -99,7 +99,7 @@
 
                 <div>
                     <span>
-                        Total Transactions
+                        Total Transaksi
                     </span>
 
                     <h2>
@@ -118,11 +118,11 @@
 
                 <div>
                     <span>
-                        Total Income
+                        Total Pemasukan
                     </span>
 
                     <h2>
-                        Rp {{ number_format($income, 0, ',', '.') }}
+                        {{ \App\Support\MoneyFormatter::format($income) }}
                     </h2>
                 </div>
 
@@ -137,11 +137,11 @@
 
                 <div>
                     <span>
-                        Total Expenses
+                        Total Pengeluaran
                     </span>
 
                     <h2>
-                        Rp {{ number_format($expense, 0, ',', '.') }}
+                        {{ \App\Support\MoneyFormatter::format($expense) }}
                     </h2>
                 </div>
 
@@ -157,11 +157,11 @@
                 <div>
 
                     <h3>
-                        Recent Transactions
+                        Transaksi Terbaru
                     </h3>
 
                     <p>
-                        Latest activity across all accounts.
+                        Aktivitas terbaru seluruh akun.
                     </p>
 
                 </div>
@@ -193,7 +193,7 @@
                                 </span>
 
                                 <span>
-                                    {{ $transaction->category?->name ?? 'Uncategorized' }}
+                                    {{ $transaction->category?->name ?? 'Tanpa kategori' }}
                                 </span>
 
                                 <small>
@@ -207,13 +207,13 @@
                                 @if($transaction->type == 'pemasukan')
 
                                     <strong class="admin-income">
-                                        + Rp {{ number_format($transaction->amount, 0, ',', '.') }}
+                                        + {{ \App\Support\MoneyFormatter::format($transaction->amount) }}
                                     </strong>
 
                                 @else
 
                                     <strong class="admin-expense">
-                                        - Rp {{ number_format($transaction->amount, 0, ',', '.') }}
+                                        - {{ \App\Support\MoneyFormatter::format($transaction->amount) }}
                                     </strong>
 
                                 @endif
@@ -231,7 +231,7 @@
                 <div class="empty-transactions">
 
                     <p>
-                        No transactions yet.
+                        Belum ada transaksi.
                     </p>
 
                 </div>
@@ -242,7 +242,7 @@
 
         <div class="admin-shortcuts">
             <a href="{{ route('admin.transactions') }}" class="admin-shortcut-link">
-                View all transactions
+                Lihat Semua Transaksi
             </a>
         </div>
 
@@ -259,7 +259,7 @@
                 type="submit"
                 class="logout-button"
             >
-                Log Out
+                Keluar
             </button>
 
         </form>
